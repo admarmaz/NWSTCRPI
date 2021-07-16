@@ -49,10 +49,22 @@ public class serverConnection extends javax.swing.JFrame {
 
         jLabel1.setText("Frecuency: ");
 
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
         jLabel2.setText("Duration (ms):");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("Configuración acordada del server");
+
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Stop");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -62,6 +74,11 @@ public class serverConnection extends javax.swing.JFrame {
         });
 
         jButton2.setText("Run");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -104,7 +121,7 @@ public class serverConnection extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
@@ -114,6 +131,23 @@ public class serverConnection extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        if(!jTextField1.getText().isEmpty()){
+            int freq = updateFreq(); 
+        }
+        if(!jTextField2.getText().isEmpty()){
+            updateDuration(); 
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,6 +182,16 @@ public class serverConnection extends javax.swing.JFrame {
                 new serverConnection().setVisible(true);
             }
         });
+    }
+    
+    public Integer updateFreq(){
+        Integer freq = Integer.parseInt(jTextField1.getText());
+        return freq;
+    }
+    
+    public Integer updateDuration(){
+        Integer duration = Integer.parseInt(jTextField2.getText());
+        return duration;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
