@@ -5,6 +5,8 @@
  */
 package nwstcrpi;
 
+import javax.swing.JLabel;
+
 /**
  *
  * @author joliver
@@ -15,7 +17,9 @@ public class NWSTCRPI {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+     
+        JLabel mylabel = new JLabel();
+        mylabel.setText("You entered a: ");
         
         
     }

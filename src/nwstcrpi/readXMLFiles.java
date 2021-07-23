@@ -24,8 +24,8 @@ public class readXMLFiles {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws Exception {
-        
-        File xmlFile = new File("D:\\Profiles\\Documentos\\amartinez\\Documents\\NetBeansProjects\\NWSTCRPI\\src\\nwstcrpi\\preferencesData.xml");
+          
+        File xmlFile = new File("D:\\Profiles\\Documentos\\amartinez\\Documents\\NetBeansProjects\\NWSTCRPI\\results.xml");
         
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
@@ -42,8 +42,11 @@ public class readXMLFiles {
                 Element element = (Element) node;
 
                 System.out.print("Frecuencia: " + element.getElementsByTagName("frequency").item(0).getTextContent());
+                System.out.print("Duration: " + element.getElementsByTagName("duration").item(0).getTextContent());
             }
         }
+        
+
     }
     
 }

@@ -1,6 +1,7 @@
 package Sensors;
 import static java.lang.System.console;
 import Sensors.serverConnection;
+import javax.swing.JLabel;
 
 /**
  * @author amartinez
@@ -11,6 +12,7 @@ public class mainSensors extends javax.swing.JFrame {
     /**
      * Creates new form mainSensors
      */
+    
     public mainSensors() {
         initComponents();
     }
@@ -117,6 +119,12 @@ public class mainSensors extends javax.swing.JFrame {
             }
         });
 
+        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField1ActionPerformed(evt);
+            }
+        });
+
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jCheckBox2.setText("show password");
@@ -200,7 +208,7 @@ public class mainSensors extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addGap(22, 22, 22))
+                .addGap(14, 14, 14))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -336,7 +344,7 @@ public class mainSensors extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(154, Short.MAX_VALUE))
         );
 
         pack();
@@ -357,11 +365,11 @@ public class mainSensors extends javax.swing.JFrame {
 
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
 
-       
+        jTextField7.setText("Hi");
     }//GEN-LAST:event_jTextField7ActionPerformed
 
     private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTextField8ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -397,6 +405,12 @@ public class mainSensors extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
+    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField1ActionPerformed
+
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -428,9 +442,15 @@ public class mainSensors extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new mainSensors().setVisible(true);
+                
+                JLabel mylabel = new JLabel();
+                mylabel.setText("You entered a: ");
             }
         });
     }
+
+
+
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
