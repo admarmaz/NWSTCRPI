@@ -59,6 +59,8 @@ public class serverConnection extends javax.swing.JFrame {
         btnSave = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -118,6 +120,14 @@ public class serverConnection extends javax.swing.JFrame {
 
         jLabel3.setText("Nombre del archivo:");
 
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        jTextField2.setText("jTextField2");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -135,11 +145,17 @@ public class serverConnection extends javax.swing.JFrame {
                             .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtFrequency, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDuration, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtDuration, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(13, 13, 13)
-                                .addComponent(btnSave)))
+                                .addComponent(btnSave))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtFrequency, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -161,11 +177,13 @@ public class serverConnection extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtFrequency, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFrequency, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtDuration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDuration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -208,43 +226,49 @@ public class serverConnection extends javax.swing.JFrame {
     }//GEN-LAST:event_txtFrequencyKeyTyped
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-         try {
-      DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-      DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-      //Elemento raíz
-      Document doc = docBuilder.newDocument();
-      Element rootElement = doc.createElement("root");
-      doc.appendChild(rootElement);
-      //Primer elemento
-      Element elemento1 = doc.createElement("configuration");
-      rootElement.appendChild(elemento1);
-      //Se agrega un atributo al nodo frequency y su valor
-      Attr attr = doc.createAttribute("id");
-      attr.setValue("config");
-      elemento1.setAttributeNode(attr);
-      
-      //Con frequency
-      Element frequency = doc.createElement("frequency");
-      frequency.setTextContent(txtFrequency.getText());
-      rootElement.appendChild(frequency);
-      
-      //Con duration
-      Element duration = doc.createElement("duration");
-      duration.setTextContent(txtDuration.getText());
-      rootElement.appendChild(duration);
-      //Se escribe el contenido del XML en un archivo
-      TransformerFactory transformerFactory = TransformerFactory.newInstance();
-      Transformer transformer = transformerFactory.newTransformer();
-      DOMSource source = new DOMSource(doc);
-      StreamResult result = new StreamResult(new File("D:\\Profiles\\Documentos\\fantoli\\Documents\\NetBeansProjects\\NWSTCRPI\\results.xml"));
-      transformer.transform(source, result);
-      JOptionPane.showMessageDialog(null, "XML guardado en la ruta:" + "D:\\Profiles\\Documentos\\fantoli\\Documents\\NetBeansProjects\\NWSTCRPI\\results.xml");
-    } catch (ParserConfigurationException pce) {
-      pce.printStackTrace();
-    } catch (TransformerException tfe) {
-      tfe.printStackTrace();
-    }
+        try {
+           DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+           DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+           //Elemento raíz
+           Document doc = docBuilder.newDocument();
+           Element rootElement = doc.createElement("root");
+           doc.appendChild(rootElement);
+           //Primer elemento
+           Element elemento1 = doc.createElement("configuration");
+           rootElement.appendChild(elemento1);
+           //Se agrega un atributo al nodo frequency y su valor
+           Attr attr = doc.createAttribute("id");
+           attr.setValue("config");
+           elemento1.setAttributeNode(attr);
+
+           //Con frequency
+           Element frequency = doc.createElement("frequency");
+           frequency.setTextContent(txtFrequency.getText());
+           rootElement.appendChild(frequency);
+
+           //Con duration
+           Element duration = doc.createElement("duration");
+           duration.setTextContent(txtDuration.getText());
+           rootElement.appendChild(duration);
+           //Se escribe el contenido del XML en un archivo
+           TransformerFactory transformerFactory = TransformerFactory.newInstance();
+           Transformer transformer = transformerFactory.newTransformer();
+           DOMSource source = new DOMSource(doc);
+           String username = System.getProperty("user.name");
+           String ruta = "D:\\Profiles\\Documentos\\" + username + "\\Documents\\NetBeansProjects\\NWSTCRPI\\results.xml";
+           StreamResult result = new StreamResult(new File("D:\\Profiles\\Documentos\\amartinez\\Documents\\NetBeansProjects\\NWSTCRPI\\results.xml"));
+           transformer.transform(source, result);
+           JOptionPane.showMessageDialog(null, "XML guardado en la ruta:" + "D:\\Profiles\\Documentos\\" + username + "\\Documents\\NetBeansProjects\\NWSTCRPI\\results.xml");
+           } catch (ParserConfigurationException pce) {
+               pce.printStackTrace();
+           } catch (TransformerException tfe) {
+               tfe.printStackTrace();
+           }
     }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -290,6 +314,8 @@ public class serverConnection extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField txtDuration;
     private javax.swing.JTextField txtFrequency;
     private javax.swing.JTextField txtNombre;
